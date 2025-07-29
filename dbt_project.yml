@@ -11,3 +11,7 @@ seeds:
   sales_analytics_dbt:
     +quote_columns: false
     +schema: seeds
+
+models:
+  sales_analytics_dbt:
+    +materialized: view
