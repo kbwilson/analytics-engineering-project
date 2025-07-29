@@ -1,0 +1,13 @@
+name: 'sales_analytics_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dbt_cloud'
+
+model-paths: ['models']
+seed-paths: ['seeds']
+
+seeds:
+  sales_analytics_dbt:
+    +quote_columns: false
+    +schema: seeds
