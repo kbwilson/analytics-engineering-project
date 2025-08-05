@@ -24,7 +24,9 @@ All data flows through an ingestion and transformation pipeline to power automat
 | Visualization| Looker Studio      | BI dashboards and insights          |
 
 ## 📁 Project Structure
+
 '''
+
 analytics-engineering-project/
 ├── README.md
 ├── data/ # Sample data files only
@@ -46,6 +48,7 @@ analytics-engineering-project/
 │ │ └── marts/
 │ ├── tests/
 │ └── snapshots/
+
 '''
 
 ## 📊 Data Sources
