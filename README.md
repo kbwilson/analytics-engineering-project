@@ -1,1 +1,1 @@
-# sales_analytics_dbt
+# analytics-engineering-project
