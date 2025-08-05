@@ -25,7 +25,7 @@ All data flows through an ingestion and transformation pipeline to power automat
 
 ## 📁 Project Structure
 
-'''
+```
 
 analytics-engineering-project/
 ├── README.md
@@ -49,7 +49,7 @@ analytics-engineering-project/
 │ ├── tests/
 │ └── snapshots/
 
-'''
+```
 
 ## 📊 Data Sources
 
