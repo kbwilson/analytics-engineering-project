@@ -4,10 +4,14 @@ config-version: 2
 
 profile: 'dbt_cloud'
 
-model-paths: ['models']
-seed-paths: ['seeds']
+model-paths: ['dbt/models']
+seed-paths: ['dbt/seeds']
 
 seeds:
   sales_analytics_dbt:
     +quote_columns: false
     +schema: seeds
+
+models:
+  sales_analytics_dbt:
+    +materialized: view
