@@ -2,7 +2,9 @@
 
 SELECT
   CAST(customer_id AS STRING) AS customer_id,
-  customer_name,
-  customer_email,
-  customer_segment
+  customer_id,
+  name,
+  email,
+  signup_date,
+  region
 FROM {{ ref('customers') }}
