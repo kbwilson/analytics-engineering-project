@@ -4,8 +4,8 @@ config-version: 2
 
 profile: 'dbt_cloud'
 
-model-paths: ['models']
-seed-paths: ['seeds']
+model-paths: ['dbt/models']
+seed-paths: ['dbt/seeds']
 
 seeds:
   sales_analytics_dbt:
