@@ -2,7 +2,6 @@
 
 SELECT
   CAST(customer_id AS STRING) AS customer_id,
-  customer_id,
   name,
   email,
   signup_date,
