@@ -1,4 +1,4 @@
--- models/mart/mart_sales_by_region.sql
+-- dbt/models/mart/mart_sales_by_region.sql
 
 with sales as (
     select
@@ -13,6 +13,7 @@ select
     sum(s.order_amount) as total_sales,
     count(s.order_id) as total_orders
 from sales s
-join {{ ref('stg_customers') }} c
+left join {{ ref('stg_customers') }} c
     on s.customer_id = c.customer_id
 group by c.region
+
