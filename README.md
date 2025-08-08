@@ -30,7 +30,7 @@ The repo is structured to be easily extensible for future data sources (e.g., li
 
 ## 📁 Project Structure
 
-```plaintext
+```
 analytics-engineering-project/
 ├── dashboards/           # Links to final dashboards
 ├── dbt/
@@ -46,8 +46,18 @@ analytics-engineering-project/
 ├── models/nfl_models/    # Reserved for future NFL analytics
 └── README.md
 ```
+---
 
+## 🗺️ Data Flow
 
+```
+flowchart LR
+  Seeds[(seeds: customers, orders, products)]
+  Seeds --> STG[staging models<br/>stg_customers, stg_orders, stg_products]
+  STG --> INT[int models<br/>int_customers, int_order_summary, int_time_aggregates, int_products, int_inventory, int_sales_region, int_customer_segments]
+  INT --> MART[marts<br/>mart_sales_by_region, mart_sales_by_product, mart_sales_by_customer, mart_sales_over_time, mart_inventory_summary]
+  MART --> Dashboards[Looker Studio dashboards<br/>Sales by Region, Top Products, CLV, Revenue Trends]
+```
 ---
 
 
@@ -57,6 +67,8 @@ analytics-engineering-project/
 - 🛍️ [Top Products](https://lookerstudio.google.com/s/ppd2UBm7Rus)
 - 👤 [Customer Lifetime Value](https://lookerstudio.google.com/s/hA7EA8bp_UQ)
 - 📈 [Revenue Trends](https://lookerstudio.google.com/s/r7AqNyIFVGw)
+
+![Sales by Region dashboard](assets/sales_by_region.png)
 
 ---
 
