@@ -11,7 +11,7 @@ exposures:
       - ref('mart_sales_by_region')
     owner:
       name: Kyle Wilson
-      email: your.email@example.com
+      email: kwilson818@gmail.com
 
   - name: top_products_dashboard
     label: "Top Products Dashboard"
@@ -23,29 +23,28 @@ exposures:
       - ref('mart_sales_by_product')
     owner:
       name: Kyle Wilson
-      email: your.email@example.com
+      email: kwilson818@gmail.com
 
   - name: customer_lifetime_value_dashboard
     label: "Customer Lifetime Value Dashboard"
     type: dashboard
     maturity: medium
     url: https://lookerstudio.google.com/s/hA7EA8bp_UQ
-    description: "Analyzes average order value and frequency by customer"
+    description: "Analyzes order value and frequency by customer"
     depends_on:
       - ref('mart_sales_by_customer')
     owner:
       name: Kyle Wilson
-      email: your.email@example.com
+      email: kwilson818@gmail.com
 
   - name: revenue_trends_dashboard
     label: "Revenue Trends Dashboard"
     type: dashboard
     maturity: medium
     url: https://lookerstudio.google.com/s/r7AqNyIFVGw
-    description: "Shows monthly revenue trends and sales growth"
+    description: "Visualizes revenue trends over time"
     depends_on:
-      - ref('mart_sales_by_region')  # Or whichever model powers this
+      - ref('mart_sales_by_region')
     owner:
       name: Kyle Wilson
-      email: your.email@example.com
-
+      email: kwilson818@gmail.com
