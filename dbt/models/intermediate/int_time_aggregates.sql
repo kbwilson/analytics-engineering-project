@@ -1,10 +1,14 @@
-with orders as (
-    select * from {{ ref('stg_orders') }}
+-- BigQuery: DATE_TRUNC takes (date_expr, date_part) with an unquoted date part
+-- Also avoid aliasing to the bare word "day" just in case; use day_date.
+
+WITH orders AS (
+  SELECT *
+  FROM {{ ref('stg_orders') }}
 )
-select
-    date_trunc('day', order_date) as day,
-    sum(order_amount) as daily_sales,
-    count(order_id) as daily_orders
-from orders
-group by day
-order by day
+SELECT
+  DATE_TRUNC(order_date, DAY) AS day_date,
+  SUM(order_amount) AS daily_sales,
+  COUNT(order_id) AS daily_orders
+FROM orders
+GROUP BY day_date
+ORDER BY day_date;
