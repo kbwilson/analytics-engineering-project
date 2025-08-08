@@ -10,12 +10,13 @@ with sales as (
 inventory as (
     select 
         p.product_id,
-        p.initial_inventory,
-        s.total_sales
+        sum(o.quantity) as total_sales
     from {{ ref('stg_products') }} p
-    left join sales s on p.product_id = s.product_id
+    left join {{ ref('stg_orders') }} o on p.product_id = o.product_id
+    group by p.product_id
 )
 select
     product_id,
-    initial_inventory - coalesce(total_sales, 0) as remaining_inventory
+    -- We skip initial_inventory and just calculate total sales
+    coalesce(total_sales, 0) as remaining_inventory
 from inventory
