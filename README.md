@@ -50,7 +50,7 @@ analytics-engineering-project/
 
 ## 🗺️ Data Flow
 
-```
+```mermaid
 flowchart LR
   Seeds[(seeds: customers, orders, products)]
   Seeds --> STG[staging models<br/>stg_customers, stg_orders, stg_products]
