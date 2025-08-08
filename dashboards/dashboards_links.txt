@@ -1,0 +1,6 @@
+## Dashboards Links
+
+- 📍 [Sales by Region](https://lookerstudio.google.com/s/smFV5AAQiu0)
+- 🛍️ [Top Products](https://lookerstudio.google.com/s/ppd2UBm7Rus)
+- 👤 [Customer Lifetime Value](https://lookerstudio.google.com/s/hA7EA8bp_UQ)
+- 📈 [Revenue Trends](https://lookerstudio.google.com/s/r7AqNyIFVGw)
