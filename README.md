@@ -1,17 +1,19 @@
-# Analytics Engineering Project
+# Sales Analytics Pipeline – Modern Data Stack Project
 
-This project demonstrates a modern analytics pipeline focused on **sales performance analysis** using synthetic data. It showcases data ingestion, transformation, and visualization using tools like **dbt**, **BigQuery**, and **Looker Studio**.
+This project demonstrates a complete **modern data stack pipeline** focused on *sales performance analytics*. It uses **dbt**, **BigQuery**, and **Looker Studio** to transform seed data into business-ready dashboards.
 
 ---
 
 ## 🚀 Project Overview
 
-The primary goal of this project is to simulate a real-world analytics workflow, from raw data to business-ready dashboards. It includes:
+The pipeline:
+- Uses **Mockaroo** seed files for customers, orders, and products.
+- Transforms data in dbt using a layered structure:
+  - **staging** → **intermediate** → **mart**
+- Adds **schema tests** and **BI exposures** for traceability.
+- Feeds directly into **Looker Studio dashboards** for insights.
 
-- Seeded data from [Mockaroo](https://mockaroo.com/) representing orders, customers, and products.
-- A modular dbt pipeline with staging, mart, and test layers.
-- Four interactive dashboards built in Looker Studio.
-- Optional scaffolding for future additions (e.g., NFL API ingestion).
+The repo is structured to be easily extensible for future data sources (e.g., live NFL data via APIs).
 
 ---
 
@@ -19,39 +21,37 @@ The primary goal of this project is to simulate a real-world analytics workflow,
 
 | Layer        | Tool               | Purpose                             |
 |--------------|--------------------|-------------------------------------|
-| Transformation | dbt              | Modular, testable SQL models        |
-| Storage      | BigQuery           | Cloud data warehouse                 |
-| Visualization| Looker Studio      | BI dashboards and insights          |
-| Orchestration| Airflow (optional) | Future orchestration layer          |
+| Transformation | dbt              | Modular SQL models, tests, docs    |
+| Storage      | BigQuery           | Cloud data warehouse               |
+| Visualization| Looker Studio      | BI dashboards and insights         |
+| Orchestration| dbt Cloud Jobs     | Build, test, and document pipeline |
 
 ---
 
 ## 📁 Project Structure
 
-```
+```plaintext
 analytics-engineering-project/
-├── dashboards/ # Links to final dashboards (see below)
-├── data/ # Placeholder for any additional test data
+├── dashboards/           # Links to final dashboards
 ├── dbt/
-│ ├── dbt_project.yml # DBT config
-│ ├── models/ # Staging and mart models
-│ ├── seeds/ # Mockaroo seed files
-│ ├── snapshots/ # Placeholder for future snapshots
-│ ├── tests/ # Schema tests
-│ └── macros/ # Placeholder for custom macros
-├── ingestion/ # Placeholder for future ingestion scripts
-├── orchestration/ # Placeholder for future DAGs (Airflow)
-├── models/nfl_models/ # Optional future addition
-├── requirements.txt
+│   ├── dbt_project.yml   # dbt config
+│   ├── models/
+│   │   ├── staging/      # Clean and standardize raw data
+│   │   ├── intermediate/ # Business logic & aggregations
+│   │   └── marts/        # Final business-ready datasets
+│   ├── seeds/            # Mockaroo CSVs
+│   ├── tests/            # Schema tests
+│   └── snapshots/        # (Optional) SCD handling
+├── ingestion/            # Reserved for future ingestion scripts
+├── models/nfl_models/    # Reserved for future NFL analytics
 └── README.md
 ```
 
 
 ---
 
-## 📊 Dashboards
 
-All dashboards are interactive and built with Looker Studio:
+## 📊 Dashboards
 
 - 📍 [Sales by Region](https://lookerstudio.google.com/s/smFV5AAQiu0)
 - 🛍️ [Top Products](https://lookerstudio.google.com/s/ppd2UBm7Rus)
@@ -62,41 +62,31 @@ All dashboards are interactive and built with Looker Studio:
 
 ## 🧪 dbt Features
 
-- **Layered architecture:** `staging → marts`
-- **Clean type casting and transformations**
-- **Built-in tests:** `unique`, `not_null`, `accepted_values`
-- **Ready for documentation** via `dbt docs`
-- **Supports exposures for BI visibility (optional)**
-- **BigQuery** as a performant backend
+- Layered architecture: **staging → intermediate → mart**
+- Schema tests: `not_null`, `unique`, `accepted_values`
+- Exposures linking mart models to dashboards
+- Built-in documentation via `dbt docs generate`
 
 ---
 
-## 🧠 How to Use This Repo
+## 📘 How to Run
 
-1. Clone this repo and connect to a BigQuery project.
-2. Seed your database with the sample data in `/seeds`.
-3. Run dbt:
-   ```bash
-   dbt seed
-   dbt run
-   dbt test
-4. Explore the Looker dashboards via the links above.
-
----
+```bash
+dbt seed
+dbt build
+dbt docs generate
+```
+In dbt Cloud, run the Build, Test, and Docs job to execute this process automatically.
 
 ## 🧱 Future Enhancements
-The repo contains scaffolding for:
 
-NFL data ingestion via Python script (players_flattened.sql and ingestion folders)
-
-Airflow DAGs for orchestration
-
-dbt exposures and documentation site
-
-Snapshots for slowly changing dimensions
+- **NFL player/team data ingestion via API** – Extend the project to pull real-time NFL training camp and roster data, integrate it into the same transformation pipeline, and produce sports analytics dashboards.
+- **Airflow DAG orchestration** – Automate and schedule dbt runs using Apache Airflow, ensuring the data pipeline executes reliably on a set cadence with monitoring and alerting.
+- **Snapshots for slowly changing dimensions** – Implement dbt snapshot models to track historical changes in dimension tables (e.g., customer information) for more accurate trend and retention analysis.
 
 ---
 
-📜 License
-MIT License
+## 📜 License
+
+MIT License – see [LICENSE](LICENSE) for details.
 
