@@ -1,0 +1,51 @@
+version: 2
+
+exposures:
+  - name: sales_by_region_dashboard
+    label: "Sales by Region Dashboard"
+    type: dashboard
+    maturity: medium
+    url: https://lookerstudio.google.com/s/smFV5AAQiu0
+    description: "Displays total revenue and order count by customer region"
+    depends_on:
+      - ref('mart_sales_by_region')
+    owner:
+      name: Kyle Wilson
+      email: your.email@example.com
+
+  - name: top_products_dashboard
+    label: "Top Products Dashboard"
+    type: dashboard
+    maturity: medium
+    url: https://lookerstudio.google.com/s/ppd2UBm7Rus
+    description: "Highlights top-selling products by sales and order volume"
+    depends_on:
+      - ref('mart_sales_by_product')
+    owner:
+      name: Kyle Wilson
+      email: your.email@example.com
+
+  - name: customer_lifetime_value_dashboard
+    label: "Customer Lifetime Value Dashboard"
+    type: dashboard
+    maturity: medium
+    url: https://lookerstudio.google.com/s/hA7EA8bp_UQ
+    description: "Analyzes average order value and frequency by customer"
+    depends_on:
+      - ref('mart_sales_by_customer')
+    owner:
+      name: Kyle Wilson
+      email: your.email@example.com
+
+  - name: revenue_trends_dashboard
+    label: "Revenue Trends Dashboard"
+    type: dashboard
+    maturity: medium
+    url: https://lookerstudio.google.com/s/r7AqNyIFVGw
+    description: "Shows monthly revenue trends and sales growth"
+    depends_on:
+      - ref('mart_sales_by_region')  # Or whichever model powers this
+    owner:
+      name: Kyle Wilson
+      email: your.email@example.com
+
